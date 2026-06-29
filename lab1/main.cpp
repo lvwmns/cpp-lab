@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cstring>
 
 using namespace std;
 
@@ -8,17 +9,18 @@ int main()
     ifstream fin("input.txt");
     ofstream fout("output.txt");
 
-    char words[1000][100];
-    int count = 0;
+    char word[100];
 
-    while (fin >> words[count])
+    while (fin >> word)
     {
-        count++;
-    }
+        int len = strlen(word);
 
-    for (int i = count - 1; i >= 0; i--)
-    {
-        fout << words[i] << " ";
+        for (int i = len - 1; i >= 0; i--)
+        {
+            fout << word[i];
+        }
+
+        fout << " ";
     }
 
     fin.close();
